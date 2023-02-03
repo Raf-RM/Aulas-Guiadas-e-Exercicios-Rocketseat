@@ -1,0 +1,70 @@
+/*ESPECIFICIDADE --> APESAR DE BODY RECEBER A FONTE OPEN SANS
+NÓS ESPECIFICAMOS QUE H1 RECEBE A FONTE INTER*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: 0;
+}
+
+#hero {
+  width: 592px;
+  margin: 0 auto 72px ;
+
+  /*
+  O MARGIN ANTERIOR (short hand) É IGUAL A SE ESCREVERMOS COMO ABAIXO  
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 72px;
+  margin-left: auto;*/
+}
+
+#hero img{
+  margin-bottom: 72px;
+}
+
+h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 49px;
+  line-height: 56px;
+  font-weight: normal;
+
+  margin-bottom: 32px;
+}
+
+h1 span {
+  font-weight: bold;
+}
+
+
+span, a {
+  color: #FF9900;
+}
+
+p, footer {
+  color: #7D7987;
+  font-size: 14px;
+  line-height: 28px;
+}
+
+#footer a + a {
+  /*SELETOR ESPECIAL (+ a) QUE PEGA UM "a" QUE TENHA UM "a" ANTERIOR A ELE E APLICA*/
+  margin-left: 28px;
+  
+}
+
+.line {
+  width: 568px;
+  height: 0px;
+
+  margin: 0 auto 8px;
+
+  border: 1px solid #ECEFF2;
+}
+
+#balls {
+  position: fixed;
+  /*ELEMENTO FICA FIXO NA TELA (NÂO SE MOVE COM A BARRA DE ROLAGEM*/
+  bottom: 0px;
+  right: 0px;
+}
