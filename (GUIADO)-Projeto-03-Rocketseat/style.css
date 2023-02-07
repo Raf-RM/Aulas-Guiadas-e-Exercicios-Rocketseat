@@ -74,7 +74,6 @@ form fieldset .fieldset-wrapper {
 
 form fieldset legend {
   font-family: 'Archivo', sans-serif;
-  font-style: normal;
   font-weight: 600;
   font-size: 24px;
   line-height: 34px;
@@ -84,6 +83,8 @@ form fieldset legend {
   padding-bottom: 16px;
   border-bottom: 1px solid #E6E6F0;
 }
+
+
 
 form fieldset .fieldset-wrapper .input-wrapper {
   display: flex;
@@ -100,7 +101,6 @@ form fieldset .fieldset-wrapper .input-wrapper label {
 
 form fieldset .fieldset-wrapper .input-wrapper label span {
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
@@ -230,5 +230,6 @@ footer .button:hover {
 }
 
 input:invalid {
-  border: 1px solid #FF1010;
+  outline: 1px solid #FF1010;
 }
+
