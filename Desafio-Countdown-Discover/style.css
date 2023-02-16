@@ -1,0 +1,114 @@
+:root {
+  --black: #4D4C59;
+  --purple: #6C63FF;
+	--light-grey: #C8C8C8;
+  --text-color: #9C9AB6;
+}
+
+* {
+  /*GLOBAL RESETING*/
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.page {
+  width: 100vw; /*vw = VIEW WIDTH*/
+  height: 100vh; /*vh = VIEW HEIGHT*/
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#topWave, #bottonWave {
+  width: 100%;
+  position: absolute;
+  z-index: -1; /*EIXO Z, MAIS DE DENTRO E MAIS DE FORA EIXO SAINDO DA TELA*/
+}
+
+#topWave {
+  top: 0;
+}
+
+#bottonWave {
+  bottom: 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  gap: 82px;
+
+  max-width: 1180px;
+}
+
+.countdown {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.countdown h1 {
+  font-size: 36px;
+  letter-spacing: 3px;
+  /*letter-spacing: 10.5%;*/
+  color: var(--purple); /*TA SETADO NO ROOT NO INICIO DO ARQUIVO CSS*/
+  text-transform: uppercase;
+
+  margin-bottom: 19px;
+}
+
+.countdown #text {
+  font-size: 14px;
+  color: var(--text-color);
+
+  margin: 46px 0 31px;
+}
+
+.countdown button {
+  background-color: var(--purple);
+  border-radius: 10px;
+  border: none;
+  padding: 16px 32px ;
+  color: #FFF;
+  cursor: pointer;
+  transition: filter 0.2s;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+
+}
+
+.countdown button:hover {
+  filter: brightness(0.9);
+}
+
+.timer {
+  display: flex;
+  text-align: center;
+}
+
+.timer p {
+  font-size: 72px;
+  color: var(--black);
+}
+
+.timer #separator {
+  margin: 20px 12px 0;
+}
+
+.timer #label {
+  color: var(--light-grey);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+
+

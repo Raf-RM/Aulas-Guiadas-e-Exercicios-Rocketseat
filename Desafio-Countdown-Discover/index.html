@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!--defer SÓ VAI COMEÇAR A EXECUTAR O js QUANDO TODO O html ESTIVER MONTADO-->  
+  <script src="script.js" defer></script>  
+  <title>Discover | Countdown</title>
+</head>
+<body>
+
+  <div class="page">
+
+    <main>
+      <div class="countdown">
+        
+        <h1 id="countdown-title">Ready to launch in...</h1>
+        
+        <div class="timer" id="timer">
+
+          <div class="days">
+            <p id="label">Days</p>
+            <p class="timer-value"id="daysLeft">08</p>
+          </div>
+
+          <p id="separator">:</p>
+
+          <div class="hours">
+            <p id="label">Hours</p>
+            <p class=timer-value id="hoursLeft">12</p>
+          </div>
+
+          <p id="separator">:</p>
+
+          <div class="minutes">
+            <p id="label">Minutes</p>
+            <p class="timer-value"id="minutesLeft">44</p>
+          </div>
+
+          <p id="separator">:</p>   
+
+          <div class="seconds">
+            <p id="label">seconds</p>
+            <p class="timer-value" id="secondsLeft">28</p>
+          </div>
+        
+        </div>
+     
+        <p id="text">Inscreva-se para saber mais sobre o lançamento</p>
+
+        <button>Inscreva-se</button>
+
+      </div>
+
+      <img src="./images/rocket.svg" alt="">
+    </main>
+
+    <img id="topWave" src="./images/top-image.svg" alt="">
+    <img id="bottonWave" src="./images/bottom-image.svg" alt="">
+    
+  </div>   
+
+</body>
+</html>
