@@ -1,7 +1,7 @@
 /*
   type conversion (typecasting) (capacidade nossa de causar uma conversão) VS type coersion (capacidade do JS de forçar uma troca)
 
-  * Ambas alterão um tipo de dado para outro tipo
+  * Ambas alteram um tipo de dado para outro tipo
 
   type conversion --> quando nós fazemos alteração explicita de um tipo de dado para outro
   type coersion --> JS implicitamente alterando um tipo de dado para outro (JS tb pode utilizar type conversion)

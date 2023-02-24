@@ -21,6 +21,6 @@ console.log(`o segundo valor é ${number2}`)
 console.log(`a soma dos dois valores é ${sum(number1, number2)}`)
 
 // Ao criarmos uma variável dentro de uma função sem o emprego das palavras chaves (var, let, const) ela passa a existir na aplicação inteira (o que pode ocasionar erros)
-/* Teste: Retirar a palavra chave "let" dentro da function 
+/* Teste: Retirar a palavra chave "let" de dentro da function 
 console.log(total)
 */

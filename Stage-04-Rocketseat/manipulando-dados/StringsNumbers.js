@@ -3,8 +3,8 @@
 
   --> Transformando strings em números e vice versa
   --> Contando número de caracteres e dígitos
-  --> Trsformando número quebrado com duas casas decimais e trocar por vírgula
-  --> Trasformando letras minúsculas em maiúsculas e vice versa
+  --> Transformando número quebrado com duas casas decimais e trocar por vírgula
+  --> Transformando letras minúsculas em maiúsculas e vice versa
 */
 
 // Trasformações de string para number e de number para string

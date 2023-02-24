@@ -2,7 +2,7 @@
 
 // Ex.: Criando um aplicativo de frases motivacionais:
 
-// Declaração da função - dunction declaration/statement
+// Declaração da função - function declaration/statement
 function createPhrases() {
   // Em funtions, "{}" cria um novo escopo 
   // ela agrupa um bloco de código que pode ser utilizado posteriormente

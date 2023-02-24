@@ -6,7 +6,7 @@ Prototype
   * __proto__
 
   --> JS é uma linguagem baseada em prototipos
-  --> Em Js a maioria dos tipos de dados são encapsulados por um objeto ou seja, eles teram um __proto__ e irão herdar toda a cadeia de protótipos
+  --> Em Js a maioria dos tipos de dados são encapsulados por um objeto ou seja, eles terão um __proto__ e irão herdar toda a cadeia de protótipos
 
   --> Colocando uma string, um número float ou um boolean seguidos de ".__proto__" criamos um objeto (do tipo string, number ou boolean) que vai já trazer várias funcionalidades previamente definidas. Além de outro __proto__ que seria o do objeto.
 

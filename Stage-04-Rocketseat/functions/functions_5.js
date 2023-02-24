@@ -3,7 +3,7 @@
 let subject = 'create video'
 
 function createThink(subject){
-  // Só vai existir neste escopo um novo "subject" se nós passarmos "subject" como um parâmetro. Assim ele cria o cria essa nova variável "subject" com valor study mas somente dentro deste escopo, não alterando variáveis denominadas "subjects" que existam fora do escopo da função
+  // Só vai existir neste escopo um novo "subject" se nós passarmos "subject" como um parâmetro. Assim ele cria essa nova variável "subject" com valor study mas somente dentro deste escopo, não alterando variáveis denominadas "subject" que existam fora do escopo da função
   subject = 'study'
   return subject
 }

@@ -36,10 +36,10 @@ techs.shift()
 console.log(techs)
 
 // Pegar somente alguns elementos do Array (retorna da função mas não modifica o array)
-console.log(techs.slice(1,3)) // contagem a aprtir do zero, final + 1
+console.log(techs.slice(1,3)) // contagem a partir do zero, final + 1
 
 // Remover 1 ou mais itens em qualquer posição do array
-techs.splice(1,2) // recebe dois argumento, o primeiro é o index a partir do qual vc quer começar a tirar e o segundo argumento é quantos itens você quer retirar a contando com o primeiro (item do index)
+techs.splice(1,2) // recebe dois argumento, o primeiro é o index a partir do qual vc quer começar a tirar e o segundo argumento é quantos itens você quer retirar contando com o primeiro (item do index)
 console.log(techs)
 
 // Encontrar a posição de um elemento no array
