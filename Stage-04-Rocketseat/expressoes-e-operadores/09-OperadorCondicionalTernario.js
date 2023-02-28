@@ -3,7 +3,7 @@
 
   --> dependendo da condição, nós receberemos valores diferentes
 
-  --> condição enão valor 1 se não valor 2
+  --> condição então valor 1 se não valor 2
     * condition ? value1 : value2 (se verdadeiro "?" "valor1", se não ":" "valor2")
 */
 

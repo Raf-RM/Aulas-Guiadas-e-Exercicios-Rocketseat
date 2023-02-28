@@ -21,7 +21,7 @@ function sayMyName(name = '') {
 
 //Try ... Catch
 try {
-  sayMyName()
+  sayMyName() // digite uma string para testar com e sem erro
 } 
 catch(e) {
   console.log(e)
@@ -30,6 +30,6 @@ catch(e) {
 console.log("após executar a função com erro dentro do try...catch")
 
 // se tentarmos executar a função com erro fora do try...catch teremos um erro e a aplicação vai parar
-sayMyName()
+sayMyName() // comente para comparar com e sem o erro fora do try...catch
 
 console.log("Apos a executar a função com erro fora do try...catch")

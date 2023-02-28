@@ -13,7 +13,7 @@
   
   --> os dois primeiros sinais é referente aos valores (== ou !=) o terceiro sinal é referente ao tipo (=== ou !==)  
 
-  "maior que"/"menor que", "maior pi igual a"/"menor ou igual a": (>, >, >=, <=) compara se os valores são maiores menores ou iguais (njão estrito)
+  "maior que"/"menor que", "maior ou igual a"/"menor ou igual a": (>, >, >=, <=) compara se os valores são maiores menores ou iguais (não estrito)
     * > ("maior")
     * < ("menor")
     * >= ("maior ou igual a")
