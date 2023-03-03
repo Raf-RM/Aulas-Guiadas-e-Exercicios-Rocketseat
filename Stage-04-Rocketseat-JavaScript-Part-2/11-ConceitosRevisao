@@ -1,0 +1,17 @@
+--> Se criarmos um array [] ou um objeto {} utilizandoa palvra reservada "const" podemos atribuir, posteriormente, novos valores para elas uma vez que o tipo da "const" (seja array ou objto) não irá mudar.
+
+--> Criando Funções
+
+  * Named: function myFunction() {}
+      - palavra chave + nome da função + () pode ou não ter argumentos + {} instruções a serem executas pela função.
+
+  * Anonymous: const myFunction = function() {}
+      - cria-se uma variável + atribui a ela + palvra chave + () + {}
+
+  * Arrow: const myFunction = () => {}
+      - cria-se uma variável + atribui a ela + () + => troca-se a palavra chave pela arrow + {} 
+
+--> Para retirarmos dados de uma function precisamos utilizar a palavra return dentro da função com aquilo que desejamos retornar
+
+--> Arrow function não exige que se utilize o par de chaves "{}" e nem a palavra chave "return" caso tenhamos somente uma linha de retorno: const sum = (a, b) => a + b
+
