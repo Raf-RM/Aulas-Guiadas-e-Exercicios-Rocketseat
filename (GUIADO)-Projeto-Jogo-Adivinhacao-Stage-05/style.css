@@ -1,0 +1,110 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+root{
+  font-size: 62.5%; /*passa de px para REM sempre dividido por 10*/
+}
+
+body{
+  background: linear-gradient(287.56deg, #C2E9FB 0%, #A1C4FD 100%);
+  /*linear--> significa que o degrade vem de uma direção (neste caso da diagonal superior da direita para esquerda); gradient--> significa que ele é degrade*/
+
+  font-size: 1.6rem;
+
+  display: grid;
+  place-items: center;
+  /*Outra maneira de se fazer o alinhamento, como "body" só tem um "filho" podemos fazer o alinhamento utilizando display:grid e plasce-itens: center*/
+
+  height: 100vh; /*Esticando o body para ocupar todo o conteúdo*/
+}
+
+main {
+  width: min(42.8rem, 90%); /*Função min() pega o mínimo entre dois valores estipulados por nós*/
+
+  background: #FFFFFF;
+  box-shadow: 0rem .2rem .4rem rgba(0, 0, 0, 0.1); /*Direção da "luz" neste caso ela vem de cima para baixo no eixo y (já que o eixo x é 0)*/
+
+  margin-top: -12rem;
+
+  /*margin: 20.0rem auto auto; Substituido pelo display grid no body*/ 
+  border-radius: .6rem;
+  padding: 4.8rem 6.4rem 6.4rem;
+
+  text-align: center; /*Alinhando o texto no centro*/
+}
+
+/*Para ter certeza que a fonte vai pegar em toda a aplicação é melhor especificar o button e o input separadamente (caso coloquemos somente no body pode ser que o button e o input não peguem a fonte)*/
+body, button, input {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 150%;  
+}
+
+button {
+  background: #7879F1;
+  color: #FFFFFF;
+  font-weight: 700; /*ou Bold*/
+  border-radius: 0 0.4rem 0.4rem 0;
+  cursor: pointer;
+
+  transition: background .3s; /*suavizando a transição da cor de fundo (background) do button*/
+}
+
+button:hover{
+  background: #6a6ad2;
+}
+
+main .hide {
+  display: none;
+}
+
+/*screen1*/
+main p{
+  margin: 1.6rem auto 4.8rem;
+  color: rgba(52, 53, 91, 0.8); /*Isso é o mesmo que: 
+  color: #34355B;
+  opacity: 0.8;*/
+}
+
+main h1 {
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 2.9rem;
+  color: #34355B;
+}
+
+main form {
+  display: flex;
+  justify-content: center;
+}
+
+button, input {
+  border: none;
+  padding: 1.6rem;
+}
+
+input {
+  background: #DCE2E9;
+  width: 6rem;
+  border-radius: 0.4rem 0 0 0.4rem;
+}
+
+/*screen2*/
+h2 {
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 150%;
+    
+  color: #34355B;  
+
+  margin-bottom: 3.3rem;
+}
+
+.screen2 button {
+  border-radius: .4rem;
+}
