@@ -19,10 +19,11 @@
 
     <div class="screen1">
       <h1>Jogo da Adivinhação</h1>
-      <p>Adivinhe o número entre 0 e 10</p>
+      <p>Adivinhe o número entre 0 e 10.</p>
 
       <form>
-        <input id="inputNumber" type="number"> <!--id="" nos permite selecionar essa tag especificamente no .js-->
+        <input id="inputNumber" type="number" min="0" max="10"> 
+        <!--id="" nos permite selecionar essa tag especificamente no .js. min="" e max="" definem os limites que podem ser utilizados pelas setinhas dentro do input number-->
         <button id="buttonTry">Tentar</button> <!--A propriedade onclick="Nome Da Função" vai executar alguma função javascript quando clicarmos no button; event vai permitir, juntamente a função add no arquivo.js, impedir que a pagina recarregue ao clicarmos no button-->
       </form>
     </div>
