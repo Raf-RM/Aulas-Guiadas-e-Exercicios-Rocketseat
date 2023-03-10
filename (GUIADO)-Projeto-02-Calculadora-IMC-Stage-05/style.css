@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 62.5%;
+  font-size: 1.6rem;
+
+  --title-color: #0C3440;
+  --label-color: #00453A;
+  --input-color: #212529;
+  --outline-bg-button-color: #02799D;
+  --borderInp-color: rgba(73, 80, 87, 0.3);
+  --placeholder-color: rgba(73, 80, 87, 0.5);
+  --buttonText-error-color: white;
+  --bg-error-color: #F03E3E;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #040924;
+}
+
+.container {
+  /*Criando uma div "container" e colocando a "main" dentro dela nós podemos aplicar um display: grid na div container. Isso nos permite utilizar a propriedade place-content: center, que vai manter as propriedades anteriores do cartão (da div main) e vai colocar o conteudo no centro do grid da div container uma vez que só há um elemento filho dentro dela (no caso o main). A opção de utilizar uma div container e não diretamente no body se faz por que iremos utilizar outros elementos no body posteriormente.*/
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+.container .card {
+  background: white;
+  padding: 4.8rem 6.4rem 6.4rem;
+  max-width: 42.8rem;
+  margin-inline: auto; 
+  box-shadow: 0rem .2rem .4rem rgba(0, 0, 0, 0.1);
+  border-radius: .6rem;
+}
