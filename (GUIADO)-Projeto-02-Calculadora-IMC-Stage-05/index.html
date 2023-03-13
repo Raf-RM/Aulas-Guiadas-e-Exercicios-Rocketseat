@@ -20,7 +20,30 @@
 
   <div class="container">
     <main class="card">
-      AQUI VAI O CONTEÚDO
+
+      <form action="">
+        <h1 class="title">Cálculo de IMC</h1>
+
+        <div class="input-wrapper">
+          <label for="weight">Peso (kg)</label>
+          <input id="wight" type="text" placeholder="60">
+        </div>
+
+        <div class="input-wrapper">
+          <label for="height">Altura (m)</label>
+          <input id="height" type="text" placeholder="1.65">
+        </div>
+
+        <button type="submit">
+          Calcular IMC 
+          <img src="./assets/arrow.svg" alt="Seta apontando para a direita">
+          <!--Optamos por deixar a orquivo SVG em uma pasta separadamente mas, se desejassemos modificar via css poderíamos ter deixado o SVG direto no html-->
+        </button> 
+        <!--Dentro de um form, um botão será altomaticamente um botão de submite, mas se quisermos ser expecíficos podemos utilizar o type = "submite"-->
+
+
+      </form>
+      
     </main>
   </div>
 

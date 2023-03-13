@@ -6,21 +6,28 @@
 
 :root{
   font-size: 62.5%;
-  font-size: 1.6rem;
 
   --title-color: #0C3440;
   --label-color: #00453A;
   --input-color: #212529;
   --outline-bg-button-color: #02799D;
+  --bg-button-hover: #034f66;
   --borderInp-color: rgba(73, 80, 87, 0.3);
   --placeholder-color: rgba(73, 80, 87, 0.5);
   --buttonText-error-color: white;
   --bg-error-color: #F03E3E;
+  --bg-input-color: #DCE2E9;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   background: #040924;
+}
+
+body, input, button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  line-height: 2rem;
 }
 
 .container {
@@ -37,4 +44,73 @@ body {
   margin-inline: auto; 
   box-shadow: 0rem .2rem .4rem rgba(0, 0, 0, 0.1);
   border-radius: .6rem;
+}
+
+.container form {
+  width: 30rem;
+}
+
+.container form .title {
+  font-family: 'Roboto';
+  font-size: 3.2rem;
+  line-height: 4rem;
+  color: var(--title-color);  
+}
+
+.container form h1 {
+  margin-bottom: 3.2rem;
+  /*Optamos por colocar o margin bottom aqui e não no .title pois iremos utilizar o title posteriormente e pode ser que isso atrapalhe*/
+}
+
+.container form label {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--label-color);
+  margin-bottom: .8rem;
+  display: block; /*O label tem um display inline, display inline não aceita margin bottom, por isso devemos mudar o display para block*/
+}
+
+.container form input {
+  padding: 1.6rem;
+  border: .1rem solid var(--borderInp-color);
+  border-radius: .4rem;
+  background: var(--bg-input-color);
+  width: 100%;
+  /*Esse width de 100% já faz para a gente a quebra de linha uma vez que o input vai ocupar 100% do espaço disponível*/
+}
+
+.container form input:focus {
+  outline: .2rem solid var(--outline-bg-button-color);
+}
+
+.container form input::placeholder {
+  /*Criando uma sudo class chamada placeholder*/
+  color: var(--placeholder-color);
+}
+
+.input-wrapper + .input-wrapper {
+  /*Vai aplicar a modificação ao "input-wrapper" que tenha anterior a ele outro "input-wrapper" (lemos da direita para esquerda)*/
+  margin-top: 1.6rem;
+}
+
+.container form button {
+  margin-top: 3.2rem;
+  padding: 1.6rem;
+  width: 100%;
+  border: none;
+  border-radius: .4rem;
+  background-color: var(--outline-bg-button-color);
+  color: var(--buttonText-error-color);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  cursor: pointer;
+  transition: background .3s;
+}
+
+.container form button:hover {
+  background-color: var(--bg-button-hover);  
 }
