@@ -37,7 +37,7 @@ body, input, button {
   place-content: center;
 }
 
-.container .card {
+.card {
   background: white;
   padding: 4.8rem 6.4rem 6.4rem;
   max-width: 42.8rem;
@@ -46,23 +46,23 @@ body, input, button {
   border-radius: .6rem;
 }
 
-.container form {
+form {
   width: 30rem;
 }
 
-.container form .title {
+.title {
   font-family: 'Roboto';
   font-size: 3.2rem;
   line-height: 4rem;
   color: var(--title-color);  
 }
 
-.container form h1 {
+form h1 {
   margin-bottom: 3.2rem;
   /*Optamos por colocar o margin bottom aqui e não no .title pois iremos utilizar o title posteriormente e pode ser que isso atrapalhe*/
 }
 
-.container form label {
+form label {
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -71,7 +71,7 @@ body, input, button {
   display: block; /*O label tem um display inline, display inline não aceita margin bottom, por isso devemos mudar o display para block*/
 }
 
-.container form input {
+form input {
   padding: 1.6rem;
   border: .1rem solid var(--borderInp-color);
   border-radius: .4rem;
@@ -80,11 +80,11 @@ body, input, button {
   /*Esse width de 100% já faz para a gente a quebra de linha uma vez que o input vai ocupar 100% do espaço disponível*/
 }
 
-.container form input:focus {
+form input:focus {
   outline: .2rem solid var(--outline-bg-button-color);
 }
 
-.container form input::placeholder {
+form input::placeholder {
   /*Criando uma sudo class chamada placeholder*/
   color: var(--placeholder-color);
 }
@@ -94,7 +94,7 @@ body, input, button {
   margin-top: 1.6rem;
 }
 
-.container form button {
+form button {
   margin-top: 3.2rem;
   padding: 1.6rem;
   width: 100%;
@@ -111,6 +111,80 @@ body, input, button {
   transition: background .3s;
 }
 
-.container form button:hover {
+form button:hover {
   background-color: var(--bg-button-hover);  
+}
+
+
+/*Modal (ou Pop-up)*/
+
+.modal-wrapper.open {
+  /*Não há espaço acima entre ".modal-wrapper" e ".open" por que aqui é um mesmo elemento que possui as duas classes*/
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-wrapper {
+  position: absolute;
+  /*top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  Zerando as posições (top, botton, right, left) lieberadas pelo position absolute, garantimos que ele vai ocupar toda a tela
+  Outra maneira de se fazer isso é utilizando a propriedade inset:0*/
+  inset: 0;
+
+  /*como só temos um elemento na caixa podemos utilizar o display grid*/
+  display: grid;
+  place-content: center;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  /*A caixa não aparece por padrão, sendo assim, para mante-la escondida aplicamos:*/
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal {
+  position: relative;
+}
+
+.modal button {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 1.6rem;
+  right: 1.6rem;
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+.modal button:hover {
+  transform: scale(1.1);
+}
+
+.alert-error-wrapper.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.alert-error-wrapper {
+  background-color: var(--bg-error-color);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  
+  color: var(--bg-input-color);
+  font-weight: bold;
+  text-align: center;
+
+  padding: .8rem 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(-3rem);
+  transition: transform .5s;
 }

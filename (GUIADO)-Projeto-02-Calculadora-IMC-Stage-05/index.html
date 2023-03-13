@@ -18,6 +18,10 @@
 </head>
 <body>
 
+  <div class="alert-error-wrapper">
+    Digite somente números
+  </div>
+
   <div class="container">
     <main class="card">
 
@@ -26,12 +30,12 @@
 
         <div class="input-wrapper">
           <label for="weight">Peso (kg)</label>
-          <input id="wight" type="text" placeholder="60">
+          <input id="weight" type="text" placeholder="60">
         </div>
 
         <div class="input-wrapper">
-          <label for="height">Altura (m)</label>
-          <input id="height" type="text" placeholder="1.65">
+          <label for="height">Altura (cm)</label>
+          <input id="height" type="text" placeholder="165">
         </div>
 
         <button type="submit">
@@ -46,6 +50,20 @@
       
     </main>
   </div>
+
+  <div class="modal-wrapper">
+    <div class="modal card">
+      <h2 class="title">
+        <!--Botão que irá fechar o pop-up/modal-->
+        <button class="close">
+          <img src="./assets/close.svg" alt="Botão com um X para fechar o pop-up">
+        </button>
+        <!--É recomendado utilizar somente um h1 por página-->
+        <span>Seu IMC é de X</span>
+      </h2>
+    </div>
+  </div>
+
 
 </body>
 </html>
