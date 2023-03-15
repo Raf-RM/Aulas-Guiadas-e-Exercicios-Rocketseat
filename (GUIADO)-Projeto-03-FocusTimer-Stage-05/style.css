@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --base-color: 194;
+  --bg-color: #121214;
+  --text-color: #FFFFFF;
+  --primary-color: hsl(var(--base-color), 100%, 63%);
+  --bg-controls-color: hsla(var(--base-color), 100%, 63%, 0.13);
+}
+
+body{
+  background-color: var(--bg-color);
+  min-height: 100vh; /*Sem essa altura mínima o body acaba no final do conteúdo*/
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+  display: grid;
+}
+
+/*Como body possui um display grid, nós podemos utilizar algumas propriedades como justify-self e align-self, nos elementos filhos.*/
+main {
+  justify-self: center;/*justify-self: center vai alinhar este elemento no centro da coluna que ele se encontra no grid (horizontalmentelateralmente falando)*/
+  align-self: end;/*align-self:end vai alinha este elemento na base da coluna que ele se encontra no grid (verticalmente)*/
+}
+footer {
+  padding: 0 4rem 3.2rem 0;
+
+  justify-self: end;
+  align-self: end;
+}
+
+.hide {
+  display: none;
+}
+
+/*Mudando a cor do svg diretamente no css. Dentro do svg é html puro então temos o tag "path" que tem a propriedade "fill" que determina a cor do nosso svg*/
+.play svg path,
+.pause svg path,
+.sound-on svg path{
+  fill: var(--primary-color);
+}
+
+button svg {
+  width: clamp(3.2rem, 2rem + 12vw, 6.4rem);
+}
+
+#timer {
+  font-size: clamp(4rem, 4rem + 10vw, 8.8rem);
+  line-height: 10.3rem;
+  margin-bottom: 1.6rem;
+  display: flex; 
+  /*Para tirar os espaços que haviam entre os elementos 25 : 00*/
+}
+
+#controls {
+  background-color: var(--bg-controls-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+  width: clamp(10rem, 10rem + 30vw, 22.8rem); /*Propriedade clamp (mais utilizada para textos mas serve para largura/altura também) é uma especie de função onde fornecemos trẽs parâmetros: valor min, valor ideal, valor máximo. Ao fornecermos um valor ideal podemos estipular o valor min + um valor relativo ao tamanho do nosso view width (vw) desta forma, enquanto estivermos alterando o tamanho da page, o tamanho ideal irá alterar de acordo com que o tamanho da page altera, não utrapassando o valor máximo*/
+  height: clamp(8rem, 5rem + 10vw, 10.8rem);
+
+  border-radius: 9999px; /*Quando queremos uma borda parecendo uma pílula (border pill) aplicamos 9999px*/
+
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
