@@ -1,5 +1,5 @@
-import {resetTimer, contdown} from './timer.js'
-import resetControls from './controls.js'
+import Timer from './timer.js'
+import Controls from './controls.js'
 
 const buttonPlay = document.querySelector('.play')
 const buttonPause = document.querySelector('.pause')
@@ -9,40 +9,48 @@ const buttonSoundOn = document.querySelector('.sound-on')
 const buttonSoundOff = document.querySelector('.sound-off')
 const minutesDisplay = document.querySelector('.minutes')
 const secondsDisplay = document.querySelector('.seconds')
-let minutes = Number(minutesDisplay.textContent)
-let timerTimeOut
+
+const controls = Controls({
+  buttonPlay,
+  buttonPause,
+  buttonSet,
+  buttonStop,
+})
+
+const timer = Timer({
+  minutesDisplay,
+  secondsDisplay,
+  resetControls: controls.reset,
+})
+
 
 function handleButtonPause(){
-  buttonPause.classList.add('hide')
-  buttonPlay.classList.remove('hide')
-  clearTimeout(timerTimeOut)
+  controls.pause()
+  timer.hold()
 }
 
 buttonPlay.addEventListener('click', function(){
-  buttonPlay.classList.add('hide') 
-  buttonPause.classList.remove('hide')
-  buttonSet.classList.add('hide')
-  buttonStop.classList.remove('hide')
-
-  contdown()
+  controls.play()
+  timer.countdown()
 })
 
 buttonPause.addEventListener('click', handleButtonPause)
 
 buttonStop.addEventListener('click', function(){
-  resetControls()
-  resetTimer()
+  controls.reset()
+  timer.reset()
 })
 
 buttonSet.addEventListener('click', function(){
-  newMinutes = prompt('Tempo de contagem:') /*|| 25 Se não houver entrada no prompt ele vai pegar 25 - prompt ||(ou) 25 */
+  let newMinutes = controls.getMinutes()
   if(!newMinutes){
-    resetTimer()
+    timer.reset()
     return
   }
   /*Com esse "if" evitamos de pegar null e undefined por exemplo*/
-  minutes = newMinutes
-  updateTimerDisplay(minutes, 0)
+
+  timer.updateDisplay(newMinutes, 0)
+  timer.updateMinutes(newMinutes)
 })
 
 buttonSoundOn.addEventListener('click', function(){
