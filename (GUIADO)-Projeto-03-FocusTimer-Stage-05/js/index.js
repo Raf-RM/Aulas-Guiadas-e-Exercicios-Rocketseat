@@ -1,14 +1,9 @@
 import Timer from './timer.js'
 import Controls from './controls.js'
+import Sounds from './sounds.js'
+import {buttonPlay, buttonPause, buttonStop, buttonSet, minutesDisplay, secondsDisplay,} from './elements.js'
 
-const buttonPlay = document.querySelector('.play')
-const buttonPause = document.querySelector('.pause')
-const buttonStop = document.querySelector('.stop')
-const buttonSet = document.querySelector('.set')
-const buttonSoundOn = document.querySelector('.sound-on')
-const buttonSoundOff = document.querySelector('.sound-off')
-const minutesDisplay = document.querySelector('.minutes')
-const secondsDisplay = document.querySelector('.seconds')
+import Events from './events.js'
 
 const controls = Controls({
   buttonPlay,
@@ -23,42 +18,17 @@ const timer = Timer({
   resetControls: controls.reset,
 })
 
+const sound = Sounds()
 
-function handleButtonPause(){
-  controls.pause()
-  timer.hold()
-}
-
-buttonPlay.addEventListener('click', function(){
-  controls.play()
-  timer.countdown()
+const events = Events({
+  controls,
+  timer, 
+  sound
 })
 
-buttonPause.addEventListener('click', handleButtonPause)
-
-buttonStop.addEventListener('click', function(){
-  controls.reset()
-  timer.reset()
-})
-
-buttonSet.addEventListener('click', function(){
-  let newMinutes = controls.getMinutes()
-  if(!newMinutes){
-    timer.reset()
-    return
-  }
-  /*Com esse "if" evitamos de pegar null e undefined por exemplo*/
-
-  timer.updateDisplay(newMinutes, 0)
-  timer.updateMinutes(newMinutes)
-})
-
-buttonSoundOn.addEventListener('click', function(){
-  buttonSoundOff.classList.remove('hide')
-  buttonSoundOn.classList.add('hide')
-})
-
-buttonSoundOff.addEventListener('click', function(){
-  buttonSoundOff.classList.add('hide')
-  buttonSoundOn.classList.remove('hide')
-})
+events.startCount()
+events.pauseCount()
+events.stopCount()
+events.setCount()
+events.startSound()
+events.stopSound()
