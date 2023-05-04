@@ -15,37 +15,6 @@
 
   <div id="app"></div>
 
-  <script>
-
-    //Mapeando as rotas -> Criamos uma const routes que será um objeto que receberá o nome da rota como propriedade e como valor receberá o html da page.
-    const routes = {
-      "/":"/pages/home.html",
-      "/about":"/pages/about.html",
-      "/contact":"/pages/contact.html",
-      404:"/pages/404.html"
-    }
-    //Não é possível acessar as propriedades desse objeto como faziamos antes ex: routes.about ou route./about, pois não é possível utilizar "/" pra iniciar nome de propriedades e valores. Devemos acessar com routes["/about"]
-
-    //Tirando o padrão do link que é de redirecionar ao clicarmos. Criamos uma função route() que vai rotear (trabalhar com as rotas). A function route vai receber um argumento que será um evento. 
-    //Adicionando a propriedade "onclick" no html aos links. Essa propriedade é equivalente a fazermos o document.querySelector('').addEventListener('click', function).então o "event" será o onclick e a function será a "route()"
-    function route(event) {
-      event = event || window.event 
-      //verifica se foi passado um evento. Utiliza o evento passado OU (||) o evento que está na "window". "window" é o objeto global que existe na DOM, ele é o priincipal de todos os objetos da DOM.
-      event.preventDefault() 
-      // evita o padrão do "event" (click) que é de redirecionar.
-
-      window.history.pushState({}, "", event.target.href)
-      //Toda vez que mudamos de pagina ou clicamos em um href temos uma modificação no histórico do window. Como nós previnimos o acontecimento do evento padrão, o histórico não estava sendo modificado. Para corrigir isso utilizamos a propriedade "pushState" do "history", que vai colocar no histórico do window que estamos mudando de página. Quem dispara o "event" de click é o "a" (que é o target) e esse "a" possui uma propriedade href. Então estamos adicionando ao histórico geral esse href. Na propriedade "pushState", o primeiro argumento vai ser o tipo de dado que queremos add, o segundo é uma string e o terceiro argumento ée a url que queremos colocar no histórico.
-
-      handle()
-    }
-
-    function handle() {
-      //Desetruturando -> Ele vai dentro do location encontra a propriedade pathname e cria uma constante com esse valor. Estamos desestruturando o location para pegarmos só o pathname dele. Devemos utilizar sempre os mesmos nomes das propriedades.
-      const {pathname} = window.location
-      //location é uma propriedade que nos dá acesso ao pathname
-    }
-     
-  </script>
+  <script src="js/index.js" type="module"></script>
 </body>
 </html>
