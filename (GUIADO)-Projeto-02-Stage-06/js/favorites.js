@@ -1,28 +1,4 @@
-//Estruturando dados
-export class GithubUser {
-  static search(username) {
-    const endpoint = `https://api.github.com/users/${username}`
-
-    //Maneira mais detalhada
-    // return fetch(endpoint).then(data => data.json()).then(data => ({
-    //   login: data.login,
-    //   name: data.name,
-    //   public_repos: data.public_repos,
-    //   followers: data.followers
-    // })) 
-    //({}) -> group operator vai retornar direto um objeto
-
-    //Desestruturando e utilizando o shorthand
-    return fetch(endpoint)
-      .then(data => data.json)
-      .then(({login, name, public_repos, followers}) => ({
-        login,
-        name,
-        public_repos,
-        followers
-      }))
-  }
-}
+import { GithubUser } from "./GithubUser.js"
 
 // Classe que vai conter a lógica dos dados (como os dados serão estruturados)
 export class Favorites {
@@ -40,16 +16,44 @@ export class Favorites {
     //Estrutura de array contendo objetos. Podemos adicionar funcionalidades de array a essa estrutura. 
   }
 
+  //Função para salvar no localstorage
+  save() {
+    localStorage.setItem('@github-favorites:', JSON.stringify(this.entries))
+  }
+
   async add(username) {
-    const user = await GithubUser.search(username)
+    try{
+
+      const userExists = this.entries.find(entry => entry.login === username)
+
+      if(userExists) {
+        throw new Error('Usuário já cadastrado!')
+      }
+
+      const user = await GithubUser.search(username)
+
+      if(user.login === undefined) {
+        throw new Error("Usuário não encontrado!")
+      }
+
+      //Adicionando um novo elemento ao nosso array aplicando imutabilidade
+      this.entries = [user, ...this.entries] //spread operator ( ... ). Criando um novo array com um novo elemento e "espalhando" os elementos que tinhamos anteriormente dentro deste novo array
+
+      this.update()
+      this.save()
+
+    } catch(error) {
+      alert(error.message)
+    }
   }
 
   delete(user) {
     //Vamos pegar a lista (entraces) e comparar com o user que passamos, se for igual retiramos da lista entrances. A .filter() é uma funcionalidade de arrays, é uma Higher-order function (ex: map, filter, reduce,etc...). A .filter() vai rodar então uma função para cada entrada.
-    const filteredEntries = this.entries.filter((entry) => entry.login !== user.login)
+    const filteredEntries = this.entries.filter(entry => entry.login !== user.login)
 
     this.entries = filteredEntries
     this.update()
+    this.save()
   }
 }
 
@@ -76,7 +80,7 @@ export class FavoritesView extends Favorites {
 
   //Toda vez que um dado for add, removido, alterado essa função será executada completa
   update() {
-    this.removeAlTr()
+    this.removeAllTr()
         
     this.entries.forEach(user =>{
       const row = this.createRow()
@@ -133,8 +137,8 @@ export class FavoritesView extends Favorites {
     return tr
   }
 
-  removeAlTr() {
-    this.tbody.querySelectorAll('tr').forEach((tr) => {tr.remove}) 
+  removeAllTr() {
+    this.tbody.querySelectorAll('tr').forEach((tr) => {tr.remove()}) 
     //Pega todas as linhas e retorna um node list (que é um array like). Por ser um array like nós podemos passar algumas funcionalidades para ele. A funcionalidade forEach() diz que, para cada elemento do nosso array(ou array like) ele executa uma função.    
   }
 

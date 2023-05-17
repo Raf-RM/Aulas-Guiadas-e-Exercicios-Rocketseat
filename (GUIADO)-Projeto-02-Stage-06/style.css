@@ -63,6 +63,7 @@ header h1 {
 
 .search input {
   height: 3.2rem;
+  width: 18rem;
   border: 1px solid #ccc;
   border-radius: .4rem 0 0 .4rem;
   padding: 0 .8rem;
