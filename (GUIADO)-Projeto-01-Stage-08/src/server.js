@@ -1,16 +1,17 @@
 // importando o Express
 const express = require("express"); 
 
+// Importando as rotas
+const routes = require("./routes")//criamos o arquivo index.js dentro da pasta routes pq, por padrão, quando não dizemos o nome do arquivo que queremos acessar dentro de uma pasta, ele vai carregar o arquivo com o nome index
+
 // inicializando o Express
 const app = express();
 
-// implementando método GET
-app.get("/message/:id/:user", (request, response) => {
-  const {id, user} = request.params
+// Dizendo para nossa API/node qual é o tipo do conteúdo que vai vir no corpo da requisição. Neste caso JSON
+app.use(express.json());
 
-  response.send(`ID da mensagem ${id}. Nome do usuário ${user}`)
-  // estamos recuperando o parâmetro por meio do request.params.<NOME DO PARÂMETRO>
-})
+// Utilizando as rotas
+app.use(routes);
 
 // Dizendo ao express qual é a porta (endereço) no qual ele vai atender as requisições
 const PORT = 3333;
