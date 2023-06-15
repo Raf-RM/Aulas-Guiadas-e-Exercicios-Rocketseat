@@ -1,13 +1,14 @@
 const{ Router } = require("express");
 
+// Importando Controller
+const UsersController = require("../controllers/UsersController")
+
 const usersRoutes = Router();
 
-usersRoutes.post("/", (request, response) => {
-  // Pegando as informações que foram enviadas via JSON pelo body da requisição no Insomnia
-  const { name, email, password } = request.body;
+// Instanciando a classe UsersController
+const usersController = new UsersController();
 
-  response.json({ name, email, password })
-});
+usersRoutes.post("/", usersController.create);
 
 // exportando o userRoutes para ser utilizado fora deste arquivo
 module.exports = usersRoutes;

@@ -1,3 +1,7 @@
+require("express-async-errors");
+
+const AppError = require("./utils/AppError");
+
 // importando o Express
 const express = require("express"); 
 
@@ -12,6 +16,27 @@ app.use(express.json());
 
 // Utilizando as rotas
 app.use(routes);
+
+app.use((error, request, response, next) => {
+
+  // Verificando se o erro se origina no lado do cliente
+  // instanceof -> se a instancia do erro for a mesma do AppError
+  if(error instanceof AppError){
+    return response.status(error.statusCode).json({
+      status: "error",
+      message: error.message
+    });
+  }
+
+  console.error(error); //caso seja preciso debugar
+
+  // Se caso o erro não for um erro do cliente vamos emitir um erro padrão
+  return response.status(500).json({
+    status:"error",
+    message: "internal server error"
+  });
+
+})
 
 // Dizendo ao express qual é a porta (endereço) no qual ele vai atender as requisições
 const PORT = 3333;
