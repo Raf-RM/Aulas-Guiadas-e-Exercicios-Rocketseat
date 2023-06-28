@@ -1,7 +1,8 @@
 require("express-async-errors");
 
 // Importando arquivo para conectar com o banco de dados
-const database = require("./database/sqlite")
+// const database = require("./database/sqlite")
+const migrationsRun = require("./database/sqlite/migrations")
 
 const AppError = require("./utils/AppError");
 
@@ -22,7 +23,8 @@ app.use(express.json());
 // Utilizando as rotas
 app.use(routes);
 
-database()
+// database();
+migrationsRun();
 
 app.use((error, request, response, next) => {
 
