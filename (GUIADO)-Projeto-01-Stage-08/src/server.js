@@ -1,5 +1,8 @@
 require("express-async-errors");
 
+// Importando arquivo para conectar com o banco de dados
+const database = require("./database/sqlite")
+
 const AppError = require("./utils/AppError");
 
 // importando o Express
@@ -11,11 +14,15 @@ const routes = require("./routes")//criamos o arquivo index.js dentro da pasta r
 // inicializando o Express
 const app = express();
 
+
+
 // Dizendo para nossa API/node qual é o tipo do conteúdo que vai vir no corpo da requisição. Neste caso JSON
 app.use(express.json());
 
 // Utilizando as rotas
 app.use(routes);
+
+database()
 
 app.use((error, request, response, next) => {
 
