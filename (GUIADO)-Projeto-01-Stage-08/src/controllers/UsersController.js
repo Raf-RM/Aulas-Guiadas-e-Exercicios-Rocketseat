@@ -1,4 +1,4 @@
-const { hash } = require("bcryptjs"); //importando função do bcryptjs que gera a criptografia
+const { hash, compare } = require("bcryptjs"); //importando função do bcryptjs que gera a criptografia (hash) e a função para comparar senahs criptografadas (compare)
  
 const AppError = require("../utils/AppError");
 
@@ -30,7 +30,7 @@ class UsersController {
     }
 
   async update(request, response) {
-    const { name, email } = request.body; // pegando as informações, através do corpo da requisição, que estão sendo modificadas
+    const { name, email, password, old_password } = request.body; // pegando as informações, através do corpo da requisição, que estão sendo modificadas
     const { id } = request.params; // pegando a id do usuário através do parâmetro passado no endereço da requisição 
 
     //criando conexão com o banco de dados
@@ -54,14 +54,32 @@ class UsersController {
     user.name = name;
     user.email = email;
 
+    // Verificando a senha atual para poder modificar para nova sneha
+    if (password && !old_password) {
+      throw new AppError("Você precisa informar a senha atual para poder definir uma nova senha.")
+    }
+    //Verificando se a senha atual passada é a senha correta
+    if (password && old_password) {
+      const checkOldPassword = await compare(old_password, user.password)
+
+      if (!checkOldPassword) {
+        throw new AppError("Senha incorreta.")
+      }
+
+      //Se a senha informada (old_password) corresponder a senha atual então
+      user.password = await hash(password, 8)
+    }
+
+
     //executando o update do nosso database (utilizando interpolação) 
     await database.run(`
       UPDATE users SET
       name = ?,
       email = ?,
+      password = ?,
       updated_at = ?
       WHERE id = ?`,
-      [user.name, user.email, new Date(), id]
+      [user.name, user.email, user.password, new Date(), id]
       );
 
       return response.status(200).json();
