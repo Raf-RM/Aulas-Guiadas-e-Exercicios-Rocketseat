@@ -1,17 +1,24 @@
 const AppError = require("../utils/AppError");
 
+const sqliteConnection = require('../database/sqlite');
+
 class UsersController {
-  create(request, response) {
-  // Pegando as informações que foram enviadas via JSON pelo body da requisição no Insomnia
-  const { name, email, password } = request.body;
+  async create(request, response) {
+    // Pegando as informações que foram enviadas via JSON pelo body da requisição no Insomnia
+    const { name, email, password } = request.body;
+  
+    const database = await sqliteConnection();
+    
+    // verificando se um usuário já está cadastrado
+    const checkUserExist = await database.get("SELECT * FROM users WHERE email = (?)", [email]);
 
-  // Utilizando o AppError para exibir erros
-  if(!name){
-    throw new AppError("Nome é obrigatório!");
-  }
+    if(checkUserExist){
+      throw new AppError('Este e-mail já está cadastrado.');
+    }
 
-  response.status(201).json({ name, email, password });    
-  };
-};
+    return response.status(201).json();
+
+    }
+}
 
 module.exports = UsersController;
