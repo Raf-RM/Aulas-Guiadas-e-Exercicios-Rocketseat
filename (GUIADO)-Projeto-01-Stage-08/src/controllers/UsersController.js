@@ -51,8 +51,8 @@ class UsersController {
     }
 
     // Se passar por todas as verificações
-    user.name = name;
-    user.email = email;
+    user.name = name ?? user.name;
+    user.email = email ?? user.email;
 
     // Verificando a senha atual para poder modificar para nova sneha
     if (password && !old_password) {
