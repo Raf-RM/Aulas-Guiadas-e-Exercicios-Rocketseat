@@ -33,6 +33,26 @@ class NotesController {
 
     response.json();
   }
+
+  //Funcionalidade para mostrar uma nota específica
+  async show(request, response){
+    const { id } = request.params;
+
+    const note = await knex("notes").where({ id }).first(); //Mostra somente a primeira nota onde com determinada "id"
+
+    //Para mostrar as tags
+    const tags = await knex("tags").where({ note_id: id }).orderBy("name"); //traz organizado por ordem alfabética devido a propriedade "orderBy("name")"
+
+    //Para mostrar os links
+    const links = await knex("links").where({ note_id: id }).orderBy("created_at"); //traz organizado por ordem de criação
+
+    return response.json({
+      ...note,
+      tags,
+      links
+    });
+
+  }
 };
 
 module.exports = NotesController;
