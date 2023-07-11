@@ -65,8 +65,17 @@ class NotesController {
 
   //Funcionalidade para listar as notas que temos
   async index(request, response) {
-    const { title, user_id } = request.query; //pegando o user_id por uma query
-    const notes = await knex("notes").where({ user_id }).whereLike("title", `%${title}%`).orderBy("title");
+    const { title, user_id, tags } = request.query; //pegando o user_id por uma query
+    let notes;
+
+    if (tags) {
+      const filterTags = tags.split(',').map(tag => tag.trim()); // Garantindo a conversão do elementos de tags fornecidos como texto em um elemento do tipo vetor (array) ".map(tag => tag.trim())" garante que, caso haja espaçamento ou tab dentro das strings separadas pela vírgula, elas sejam ignoradas retornando somente a tag.
+
+      notes = await knex("tags").whereIn("name", filterTags);    
+    }
+    else {
+      notes = await knex("notes").where({ user_id }).whereLike("title", `%${title}%`).orderBy("title");
+    }
 
     return response.json(notes);
   }
