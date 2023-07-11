@@ -62,6 +62,14 @@ class NotesController {
 
     return response.json();
   }
+
+  //Funcionalidade para listar as notas que temos
+  async index(request, response) {
+    const { title, user_id } = request.query; //pegando o user_id por uma query
+    const notes = await knex("notes").where({ user_id }).whereLike("title", `%${title}%`).orderBy("title");
+
+    return response.json(notes);
+  }
 };
 
 module.exports = NotesController;
