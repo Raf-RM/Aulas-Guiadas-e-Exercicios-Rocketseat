@@ -71,7 +71,13 @@ class NotesController {
     if (tags) {
       const filterTags = tags.split(',').map(tag => tag.trim()); // Garantindo a conversão do elementos de tags fornecidos como texto em um elemento do tipo vetor (array) ".map(tag => tag.trim())" garante que, caso haja espaçamento ou tab dentro das strings separadas pela vírgula, elas sejam ignoradas retornando somente a tag.
 
-      notes = await knex("tags").whereIn("name", filterTags);    
+      notes = await knex("tags")
+      .select(["notes.id", "notes.title", "notes.user_id"])
+      .where("notes.user_id", user_id)
+      .whereLike("notes.title", `%${title}%`)
+      .whereIn("name", filterTags)
+      .innerJoin("notes", "notes.id", "tags.note_id")
+      .orderBy("notes.title");    
     }
     else {
       notes = await knex("notes").where({ user_id }).whereLike("title", `%${title}%`).orderBy("title");
