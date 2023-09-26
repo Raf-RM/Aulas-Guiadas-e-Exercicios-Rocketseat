@@ -9,7 +9,9 @@ export function Details() {
       <h1>Hello World!</h1>
       <span>Rafael Rodrigues</span>
 
-      <Button/>
+      <Button label="Entrar" loading />
+      <Button label="Voltar"/>
+      <Button label="Salvar" loading />
     </Container>
   )
 }
