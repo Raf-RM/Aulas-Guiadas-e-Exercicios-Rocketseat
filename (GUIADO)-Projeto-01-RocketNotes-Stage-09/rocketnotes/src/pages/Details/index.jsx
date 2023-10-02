@@ -23,6 +23,8 @@ export function Details() {
 
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum alias expedita voluptates saepe. Tenetur dicta libero earum ipsum vero laborum eos nisi error quaerat molestias illum, enim commodi ad. Libero.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur perferendis facilis accusantium, repellendus voluptatibus culpa deserunt maiores quidem, quo quisquam voluptas officia doloremque reprehenderit sequi commodi labore debitis alias voluptate!
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis soluta dicta error debitis aliquid nihil odio quam necessitatibus eius, eaque, accusamus rerum. Architecto totam voluptates possimus a numquam sunt cumque.
         </p>
 
           <Section title="Links úteis">
