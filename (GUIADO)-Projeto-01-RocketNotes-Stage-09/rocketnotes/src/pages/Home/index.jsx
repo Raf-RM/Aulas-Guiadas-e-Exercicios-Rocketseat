@@ -18,7 +18,7 @@ export function Home() {
       <Header/>
       
       <Menu>
-        <li><ButtonText title="Todos" isActive/></li>
+        <li><ButtonText title="Todos" $isActive/></li>
         <li><ButtonText title="Frontend"/></li>
         <li><ButtonText title="NodeJs"/></li>
         <li><ButtonText title="React"/></li>
@@ -45,7 +45,7 @@ export function Home() {
 
       </Content>
 
-      <NewNote>
+      <NewNote to="/new" >
         <FiPlus/>
         Criar nota
       </NewNote>
