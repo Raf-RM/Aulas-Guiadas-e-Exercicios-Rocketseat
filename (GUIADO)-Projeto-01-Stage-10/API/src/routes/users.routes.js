@@ -1,7 +1,10 @@
 const{ Router } = require("express");
 
 // Importando Controller
-const UsersController = require("../controllers/UsersController")
+const UsersController = require("../controllers/UsersController");
+
+//Importando middleware de autenticação
+const ensureAuthenticated = require("../middlewares/ensureAuthenticated");
 
 const usersRoutes = Router();
 
@@ -9,7 +12,7 @@ const usersRoutes = Router();
 const usersController = new UsersController();
 
 usersRoutes.post("/", usersController.create);
-usersRoutes.put("/:id", usersController.update);
+usersRoutes.put("/", ensureAuthenticated, usersController.update);
 
 // exportando o userRoutes para ser utilizado fora deste arquivo
 module.exports = usersRoutes;

@@ -3,7 +3,7 @@ const knex = require("../database/knex");
 class NotesController {
   async create(request, response){
     const { title, description, tags, links } = request.body; //desestruturando e pegando informações do corpo requisição 
-    const { user_id } = request.params; //desestruturando e pegando informação vindas como parâmetros no endereço da requisição
+    const user_id = request.user.id; 
 
     // Cadastrando uma nota na tabela notes com o knex; Inserindo um objeto com "insert"
     const [note_id] = await knex("notes").insert({
@@ -65,7 +65,10 @@ class NotesController {
 
   //Funcionalidade para listar as notas que temos
   async index(request, response) {
-    const { title, user_id, tags } = request.query; //pegando o user_id por uma query
+    const { title, tags } = request.query; //pegando o user_id por uma query
+
+    const user_id = request.user.id;
+
     let notes;
 
     if (tags) {
