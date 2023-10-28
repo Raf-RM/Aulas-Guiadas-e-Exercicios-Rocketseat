@@ -5,6 +5,7 @@ require("express-async-errors");
 const migrationsRun = require("./database/sqlite/migrations")
 
 const AppError = require("./utils/AppError");
+const uploadConfig = require("./configs/upload");
 
 // importando o Express
 const express = require("express"); 
@@ -19,6 +20,8 @@ const app = express();
 
 // Dizendo para nossa API/node qual é o tipo do conteúdo que vai vir no corpo da requisição. Neste caso JSON
 app.use(express.json());
+
+app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER));
 
 // Utilizando as rotas
 app.use(routes);
