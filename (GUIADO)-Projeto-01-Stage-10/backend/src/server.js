@@ -7,6 +7,9 @@ const migrationsRun = require("./database/sqlite/migrations")
 const AppError = require("./utils/AppError");
 const uploadConfig = require("./configs/upload");
 
+//importando bib cors
+const cors = require("cors");
+
 // importando o Express
 const express = require("express"); 
 
@@ -16,7 +19,7 @@ const routes = require("./routes")//criamos o arquivo index.js dentro da pasta r
 // inicializando o Express
 const app = express();
 
-
+app.use(cors());
 
 // Dizendo para nossa API/node qual é o tipo do conteúdo que vai vir no corpo da requisição. Neste caso JSON
 app.use(express.json());
