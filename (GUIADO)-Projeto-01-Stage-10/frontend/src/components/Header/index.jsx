@@ -17,7 +17,7 @@ export function Header(){
 
         <img
           src={avatarURL}
-          alt="Foto github usuário Raf-RM"
+          alt="Foto do usuário"
         />
 
         <div>

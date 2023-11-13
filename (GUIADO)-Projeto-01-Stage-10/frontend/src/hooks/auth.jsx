@@ -53,7 +53,7 @@ function AuthProvider({children}){
 
       const {password, old_password, ...userData} = user
 
-      await api.put("/users", userData)
+      await api.put("/users", user)
       localStorage.setItem("@rocketnotes:user", JSON.stringify(userData))
       setData({user, token: data.token})
       alert("Perfil atualizado com sucesso!")
