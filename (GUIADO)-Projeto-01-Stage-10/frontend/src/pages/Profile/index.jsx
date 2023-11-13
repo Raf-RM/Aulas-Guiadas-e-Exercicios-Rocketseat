@@ -9,12 +9,22 @@ import { Container, Form, Avatar } from './styles'
 import { Link } from 'react-router-dom';
 
 export function Profile(){
-  const { user } = useAuth();
+  const { user, updateProfile } = useAuth();
 
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [oldPassword, setOldPassword] = useState();
-  const [newPassword, setNewPasswprd] = useState();
+  const [newPassword, setNewPassword] = useState();
+
+  async function handleUpdate(){
+    const user = {
+      name,
+      email,
+      password: newPassword,
+      old_password: oldPassword
+    }
+    await updateProfile({ user });
+  }
 
   return (
     <Container>
@@ -69,7 +79,7 @@ export function Profile(){
           onChange={event => setNewPassword(event.target.value)}
         /> 
 
-        <Button label="Salvar" />  
+        <Button label="Salvar" onClick={handleUpdate} />  
 
       </Form>
 
