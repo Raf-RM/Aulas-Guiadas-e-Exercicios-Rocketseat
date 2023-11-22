@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi'
 
 import { useAuth } from '../../hooks/auth';
@@ -6,8 +7,8 @@ import { api } from '../../services/api';
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button';
+
 import { Container, Form, Avatar } from './styles'
-import { Link } from 'react-router-dom';
 
 import avatarPlaceholder from '../../assets/avatar_placeholder.svg'
 
@@ -23,6 +24,9 @@ export function Profile(){
   
   const [avatar, setAvatar] = useState(avatarURL);
   const [avatarFile, setAvatarFile] = useState(null);
+
+  const navigate = useNavigate();
+  
 
   async function handleUpdate(){
     const user = {
@@ -42,12 +46,16 @@ export function Profile(){
     setAvatar(imagePreview);
   }
 
+  function handleBack(){
+    navigate(-1);
+  }
+
   return (
     <Container>
       <header>
-        <Link to="/">
-          <FiArrowLeft/>
-        </Link>
+        <button type='button' onClick={handleBack} >
+          <FiArrowLeft size={24} />
+        </button>
       </header>
 
       <Form>
